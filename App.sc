@@ -6,13 +6,13 @@ import ApiKey._
 
 import com.ibm.watson.developer_cloud.alchemy.v1._
 import com.ibm.watson.developer_cloud.alchemy.v1.model._
-import collection.convert.wrapAsJava._
+import java.util._
 
 val service = new AlchemyLanguage()
 service.setApiKey(apiKey)
-val params = Map[String, AnyRef](
-  AlchemyLanguage.TEXT -> "Janusz Korwin-Mikke massacred the lefty"
-)
+
+val params = new HashMap[String, AnyRef]()
+params.put(AlchemyLanguage.TEXT, "Janusz Korwin-Mikke massacred the lefty")
 
 val sentiment = service.getSentiment(params).execute()
 println("Sentiment: " + sentiment)
